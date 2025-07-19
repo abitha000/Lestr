@@ -2,6 +2,12 @@ import os
 
 class temp(object):
     BOT = None
+def safe_int(env_var, default):
+    try:
+        return int(os.getenv(env_var, str(default)))
+    except ValueError:
+        print(f"⚠️ Warning: {env_var} is not a valid integer. Using default: {default}")
+        return default
 
 API_ID = int(os.getenv('API_ID', "24401235"))
 API_HASH = os.getenv('API_HASH', "149f7e13d7d861b27cffc3ab1fd52b22")
